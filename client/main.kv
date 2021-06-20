@@ -1,0 +1,89 @@
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+<FirstWindow>:
+    name: 'first'
+    FloatLayout:
+        TextInput:
+            id: vehicleinput
+            hint_text: 'Enter number plate info here'
+            size_hint: 0.75, 0.05
+            height: 0.5
+            pos_hint: {'x': .13, 'y':.75}
+            background_color: 1,1,1,1
+            cursor_blink: True
+            halign: 'center'
+            on_touch_down: 
+                root.enableandsend()
+        Button:
+            id: startsearch
+            text: 'start vehicle search'
+            size_hint: .5, .05
+            color: 36,130,237,1
+            disabled: True
+            pos_hint: {'x': .25, 'y':.65}
+            on_release: 
+                app.root.current = 'second'
+                root.manager.transition.direction = 'left'
+                root.sendvehicleinfo()
+<SecondWindow>:
+    name: 'second'
+    FloatLayout:
+        Camera:
+            id: camera
+            play: True
+            size_hint: 0.75, 0.5
+            size_hint_max_y: 400
+            size_hint_max_x: 400
+            size: 0.75, 0.5 
+            width: 0.5
+            resolution: 400, 400
+            pos_hint: {'x': .28, 'y':0.40}
+            allow_stretch: True
+            on_texture: 
+                root.startclock()
+        Label:
+            id: Label
+            text: "Searching for the required car..."
+            size_hint: .2, .05
+            pos_hint: {'x': .40, 'y':.15}
+        Button:
+            id: secondbutton
+            text: 'Back'
+            size_hint: .2, .05
+            pos_hint: {'x': .40, 'y':.10}
+            on_release: 
+                app.root.current = 'first'
+                root.manager.transition.direction = 'right'
+        Button:
+            id: nextbutton
+            text: 'Next'
+            size_hint: .2, .05
+            pos_hint: {'x': .40, 'y':.05}
+            on_release: 
+                app.root.current = 'third'
+            
+
+<ThirdWindow>:
+    name: 'third'
+    BoxLayout:
+        orientation: 'vertical'
+        AsyncImage:
+            id: cimage
+            resolution: 1125, 2400
+            allow_stretch: True
+            onLoad:
+                root.startimageclock()
+            on_texture:
+                app.root.current = 'third'
+        Button:
+            id: thirdbutton
+            text: 'Back'
+            size_hint: .2, .05
+            pos_hint: {'x': .4, 'y':.5}
+            on_release: 
+                app.root.current = 'first'
+                root.manager.transition.direction = 'right'
+
+             
