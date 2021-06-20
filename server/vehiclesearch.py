@@ -26,8 +26,8 @@ logger1.addHandler(ch1)
 
 # Initialize aws credentials
 
-ACCESS_KEY = 'AKIATP7MJGJSVOPW77EZ'
-SECRET_KEY = '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'
+ACCESS_KEY = 'XXXXXXXXXXXXXXXXX'
+SECRET_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 
 # Initialize the parameters
@@ -486,12 +486,6 @@ def write2img(Img,label,strg,txt_color=(0,0,0),bg_color=(255,255,255),font_size=
 	cv.rectangle(Img, tpl(tl_corner), tpl(br_corner), bg_color, -1)	
 	cv.putText(Img,strg,tpl(bl_corner),font,font_size,txt_color,3)
 
-'''
-Access Key ID:
-AKIATP7MJGJSVOPW77EZ
-Secret Access Key:
-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
-'''
 
 def processimage(spath, addr, vehstr):
   lp_str_list = []
