@@ -1,2 +1,2 @@
 # amberalert-vehiclesearch
-Vehicle search using iphone app - (python kicy)
+Vehicle search using iphone app - (python kivy)
